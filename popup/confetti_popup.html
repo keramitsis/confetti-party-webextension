@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<link rel="stylesheet" href="confetti_popup.css" />
+</head>
+
+<body>
+	<div id="popup-content">
+		<button id="confetti-click" class="confetti-button"><img src="../icons/party-face.svg" width="19" height="19" alt="">Confetti on Click</button>
+		<button id="party-popper" class="confetti-button"><img src="../icons/party-popper.svg" width="19" height="19" alt="">Party Popper</button>
+		<button id="fireworks" class="confetti-button"><img src="../icons/fireworks.svg" width="19" height="19" alt="">Fireworks</button>
+		<button id="confetti-reset" class="confetti-button"><img src="../icons/broom.svg" width="19" height="19" alt="">Reset</button>
+
+		<button class="accordion">About</button>
+		<div class="panel">
+			<p>web-ext developed by <br>
+				<a href="https://www.keramitsis.net/">Christos Keramitsis</a> (<a href="https://github.com/keramitsis/confetti-party-webextension">Sourcecode</a>)
+			</p>
+			<p>powered by <a href="https://github.com/catdad/canvas-confetti">canvas-confetti</a>,<br>
+				developed by <a href="https://github.com/catdad">Kiril Vatev</a></p>
+			<p><a href="https://twemoji.twitter.com/">Emojis</a> by Twitter</a></p>
+		</div>
+
+	</div>
+
+	<div id="error-content" class="hidden">
+		<p>Sorry, can't confettify this page.</p>
+		<p>Try a different page.</p>
+	</div>
+
+	<script src="confetti_popup.js"></script>
+</body>
+
+</html>

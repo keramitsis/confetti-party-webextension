@@ -1,0 +1,31 @@
+{
+  "manifest_version": 2,
+  "name": "Confetti Party WebExtension",
+  "description": "Confetti at the touch of a button, Fireworks and more.",
+  "version": "1.0",
+  "homepage_url": "https://github.com/keramitsis/confetti-party-webextension",
+  "icons": {
+    "48": "icons/party-face.svg",
+    "96": "icons/party-face.svg"
+  },
+  "permissions": [
+    "activeTab"
+  ],
+  "browser_action": {
+    "default_icon": "icons/party-face.svg",
+    "theme_icons": [
+      {
+        "light": "icons/party-face.svg",
+        "dark": "icons/party-face.svg",
+        "size": 16
+      },
+      {
+        "light": "icons/party-face.svg",
+        "dark": "icons/party-face.svg",
+        "size": 32
+      }
+    ],
+    "default_title": "Confetti",
+    "default_popup": "popup/confetti_popup.html"
+  }
+}
