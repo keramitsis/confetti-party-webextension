@@ -1,20 +1,21 @@
-
 /**
  * Listen for clicks on the buttons, and send the appropriate message to
  * the content script in the page.
  */
 function listenForClicks() {
   document.addEventListener("click", (e) => {
-
     function confettify(tabs) {
-
-      if(e.target.id) {
+      if (e.target.id) {
+        /*
         browser.tabs.sendMessage(tabs[0].id, {
           command: e.target.id
         });
-        window.close(); 
+        */
+        chrome.tabs.sendMessage(tabs[0].id, {
+          command: e.target.id
+        });
+        window.close();
       }
-
     }
 
     /**
@@ -29,9 +30,18 @@ function listenForClicks() {
      * then call "confettify()".
      */
     if (e.target.classList.contains("confetti-button")) {
+      /*
       browser.tabs.query({ active: true, currentWindow: true })
         .then(confettify)
         .catch(reportError);
+      */
+
+      chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
+        if (chrome.runtime.lastError) {
+          reportError();
+        }
+        confettify(tabs);
+      });
     }
   });
 }
@@ -43,7 +53,9 @@ function listenForClicks() {
 function reportExecuteScriptError(error) {
   document.querySelector("#popup-content").classList.add("hidden");
   document.querySelector("#error-content").classList.remove("hidden");
-  console.error(`Failed to execute confettify content script: ${error.message}`);
+  console.error(
+    `Failed to execute confettify content script: ${error.message}`
+  );
 }
 
 /**
@@ -51,10 +63,22 @@ function reportExecuteScriptError(error) {
  * and add a click handler.
  * If we couldn't inject the script, handle the error.
  */
+
+/*
 browser.tabs.executeScript({ file: "/content_scripts/confettify.js" })
   .then(listenForClicks)
   .catch(reportExecuteScriptError);
+*/
 
+chrome.tabs.executeScript(
+  { file: "/content_scripts/confettify.js" },
+  function () {
+    if (chrome.runtime.lastError) {
+      reportExecuteScriptError();
+    }
+    listenForClicks();
+  }
+);
 
 // ACCORDION
 
