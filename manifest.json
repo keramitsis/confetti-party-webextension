@@ -12,7 +12,7 @@
     "activeTab"
   ],
   "browser_action": {
-    "default_icon": "icons/party-face.svg",
+    "default_icon": "icons/party-face-32.png",
     "theme_icons": [
       {
         "light": "icons/party-face.svg",
