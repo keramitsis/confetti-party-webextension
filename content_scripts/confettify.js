@@ -32,7 +32,7 @@
         particleCount: 100,
         startVelocity: 30,
         spread: 360,
-        zIndex: 99999,
+        zIndex: 2147483646,
         origin: {
           x: wp,
           y: hp
@@ -46,8 +46,9 @@
    * Party Popper
    */
   function activatePartyPopper() {
-    let count = 200;
+    let count = 220;
     let defaults = {
+      zIndex: 2147483646,
       origin: { y: 1 }
     };
 
@@ -94,6 +95,7 @@
         particleCount: 2,
         angle: 60,
         spread: 55,
+        zIndex: 2147483646,
         origin: { x: 0, y: 0.7 },
         colors: colors
       });
@@ -101,6 +103,7 @@
         particleCount: 2,
         angle: 120,
         spread: 55,
+        zIndex: 2147483646,
         origin: { x: 1, y: 0.7 },
         colors: colors
       });
@@ -117,7 +120,7 @@
   function activateFireworks() {
     let duration = 15 * 1000;
     let animationEnd = Date.now() + duration;
-    let defaults = { startVelocity: 30, spread: 360, ticks: 60, zIndex: 0 };
+    let defaults = { startVelocity: 30, spread: 360, ticks: 60, zIndex: 2147483646 };
 
     function randomInRange(min, max) {
       return Math.random() * (max - min) + min;
