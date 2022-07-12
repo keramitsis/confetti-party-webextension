@@ -81,6 +81,36 @@
     });
   }
 
+
+  /**
+   * School Pride
+   */
+   function activateSchoolPride() {
+    let end = Date.now() + (15 * 1000);
+    let colors = ['#bb0000', '#ffffff'];
+    
+    (function frame() {
+      confetti({
+        particleCount: 2,
+        angle: 60,
+        spread: 55,
+        origin: { x: 0, y: 0.7 },
+        colors: colors
+      });
+      confetti({
+        particleCount: 2,
+        angle: 120,
+        spread: 55,
+        origin: { x: 1, y: 0.7 },
+        colors: colors
+      });
+    
+      if (Date.now() < end) {
+        requestAnimationFrame(frame);
+      }
+    }());
+  }
+
   /**
   * Fireworks
   */
@@ -107,6 +137,7 @@
     }, 250);
   }
 
+
   /**
   * Reset
   */
@@ -117,7 +148,7 @@
 
 
   /**
-   * Listen for messages from the background script.
+   * Listen for messages from the popup script.
    */
   browser.runtime.onMessage.addListener((message) => {
     if (message.command === "confetti-click") {
@@ -126,6 +157,8 @@
       activatePartyPopper();
     } else if (message.command === "fireworks") {
       activateFireworks();
+    } else if (message.command === "school-pride") {
+      activateSchoolPride();
     } else if (message.command === "confetti-reset") {
       resetConfetti();
     }
