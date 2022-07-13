@@ -1,7 +1,7 @@
 {
   "manifest_version": 2,
-  "name": "Confetti Party WebExtension",
-  "description": "Confetti at the touch of a button, Fireworks and more.",
+  "name": "Confetti Party",
+  "description": "Confetti all over the screen at the touch of a button.",
   "version": "1.0",
   "homepage_url": "https://github.com/keramitsis/confetti-party-webextension",
   "icons": {
