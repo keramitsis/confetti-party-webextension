@@ -61,7 +61,7 @@ chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
   chrome.scripting.executeScript(
     {
       target: { tabId: tabs[0].id },
-      files: ["/content_scripts/confettify.js"],
+      files: ["/content_scripts/confetti.browser.min.js", "/content_scripts/confettify.js"],
     },
     () => {
       if (chrome.runtime.lastError) {
