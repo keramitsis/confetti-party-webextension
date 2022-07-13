@@ -6,13 +6,8 @@ function listenForClicks() {
   document.addEventListener("click", (e) => {
     function confettify(tabs) {
       if (e.target.id) {
-        /*
-        browser.tabs.sendMessage(tabs[0].id, {
-          command: e.target.id
-        });
-        */
         chrome.tabs.sendMessage(tabs[0].id, {
-          command: e.target.id
+          command: e.target.id,
         });
         window.close();
       }
@@ -30,12 +25,6 @@ function listenForClicks() {
      * then call "confettify()".
      */
     if (e.target.classList.contains("confetti-button")) {
-      /*
-      browser.tabs.query({ active: true, currentWindow: true })
-        .then(confettify)
-        .catch(reportError);
-      */
-
       chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
         if (chrome.runtime.lastError) {
           reportError();
@@ -64,21 +53,24 @@ function reportExecuteScriptError(error) {
  * If we couldn't inject the script, handle the error.
  */
 
-/*
-browser.tabs.executeScript({ file: "/content_scripts/confettify.js" })
-  .then(listenForClicks)
-  .catch(reportExecuteScriptError);
-*/
-
-chrome.tabs.executeScript(
-  { file: "/content_scripts/confettify.js" },
-  function () {
-    if (chrome.runtime.lastError) {
-      reportExecuteScriptError();
-    }
-    listenForClicks();
+chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
+  if (chrome.runtime.lastError) {
+    reportExecuteScriptError();
   }
-);
+
+  chrome.scripting.executeScript(
+    {
+      target: { tabId: tabs[0].id },
+      files: ["/content_scripts/confettify.js"],
+    },
+    () => {
+      if (chrome.runtime.lastError) {
+        reportExecuteScriptError();
+      }
+      listenForClicks();
+    }
+  );
+});
 
 // ACCORDION
 
