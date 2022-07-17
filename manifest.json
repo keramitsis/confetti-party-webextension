@@ -2,7 +2,7 @@
   "manifest_version": 2,
   "name": "Confetti Party",
   "description": "Confetti all over the screen at the touch of a button.",
-  "version": "1.0",
+  "version": "1.1",
   "homepage_url": "https://github.com/keramitsis/confetti-party-webextension",
   "icons": {
     "48": "icons/party-face.svg",

@@ -95,3 +95,24 @@ button:hover,
 	background-color: #1e1d24;
 	font-size: 12px;
 }
+
+#error-content {
+	padding: 5px 10px 10px;
+}
+
+#error-content p {
+	font-size: 14px;
+}
+
+#error-content p:last-child {
+	margin-bottom: 0;
+}
+
+#error-content strong {
+	font-size: 16px;
+}
+
+.poo {
+	position: relative;
+	top: 2px;
+}
