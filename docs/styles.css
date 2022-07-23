@@ -123,7 +123,7 @@ button:hover,
 
 /* pen/ghp custom styles */
 :root {
-	padding: 0 15px;	
+	padding: 0 15px;
 }
 
 html,
@@ -140,6 +140,12 @@ body {
 	flex-direction: row;
 	justify-content: center;
 	align-items: center;
+}
+
+@media only screen and (max-width: 660px) {
+	body {
+		flex-direction: column;
+	}
 }
 
 #popup-content {
@@ -160,7 +166,6 @@ h1 {
 	font-size: 48px;
 	font-family: 700;
 	line-height: 1.2;
-
 	background: linear-gradient(
 		70.56deg,
 		#0022ff -35.95%,
@@ -171,10 +176,20 @@ h1 {
 		#fdac3e 81.55%,
 		#ff5c00 105.66%
 	);
-
 	-webkit-text-fill-color: transparent;
 	text-fill-color: transparent;
+	-webkit-background-clip: text;
 	background-clip: text;
+}
+
+@media only screen and (max-width: 460px) {
+	h1 {
+		font-size: 36px;
+	}
+	.headline img {
+		width: 96px;
+		height: auto;
+	}
 }
 
 /* links */
@@ -192,7 +207,7 @@ h1 {
 	border: 1px solid #4b4959;
 	box-shadow: rgba(0, 0, 0, 0.26) 0 3px 6px, rgba(0, 0, 0, 0.33) 0 3px 6px;
 	text-decoration: none;
-	transition: all ease .24s;
+	transition: all ease 0.24s;
 	color: #bab7c9;
 }
 .get-extension-links .link strong {
