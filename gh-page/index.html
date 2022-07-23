@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Confetti Party Browser Extension</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <div>
+        <div class="headline">
+            <img src="https://res.cloudinary.com/ramenhead/image/upload/v1657569772/party-face_aisger.svg" width="124" height="124" alt="">
+            <h1>Confetti Party <br>Browser Extension</h1>
+        </div>
+        <div class="get-extension-links">
+            <a id="js-firefox-link" class="link link-firefox" target="_blank" href="https://addons.mozilla.org/en-US/firefox/addon/confetti-party/">
+                <img src="https://res.cloudinary.com/ramenhead/image/upload/v1658596884/Firefox_Browser_logo_iovoxc.svg" width="32">
+                <span>Confetti Party for <strong>Firefox</strong></span>
+            </a>
+    
+            <a id="js-chrome-link" class="link link-chrome" target="_blank" href="https://chrome.google.com/webstore/detail/confetti-party/bghldpghadhfaihknpmccpnbjkmgbkbh">
+                <img src="https://res.cloudinary.com/ramenhead/image/upload/v1658596884/Google_Chrome_icon__February_2022_ajfjd5.svg" width="32">
+                <span>Confetti Party for <strong>Chrome</strong></span>
+            </a>
+        </div>
+    </div>
+    
+    <div id="popup-content">
+        <button id="confetti-click" class="confetti-button">
+            <img src="https://res.cloudinary.com/ramenhead/image/upload/v1657569772/party-face_aisger.svg" width="16" height="16" alt=""> On MouseClick
+        </button>
+        <button id="party-popper" class="confetti-button">
+            <img src="https://res.cloudinary.com/ramenhead/image/upload/v1657569771/party-popper_iliplm.svg" width="16" height="16" alt=""> Party Popper
+        </button>
+        <button id="fireworks" class="confetti-button">
+            <img src="https://res.cloudinary.com/ramenhead/image/upload/v1657569771/fireworks_xsksab.svg" width="16" height="16" alt=""> Fireworks
+        </button>
+        <button id="school-pride" class="confetti-button">
+            <img src="https://res.cloudinary.com/ramenhead/image/upload/v1658580319/drum-1f941_a8pywx.svg" width="16" height="16" alt=""> School Pride
+        </button>
+    
+        <button class="accordion">About</button>
+        <div class="panel">
+            <p>Extension developed by <br>
+                <a target="_blank" href="https://www.keramitsis.net/">Christos Keramitsis</a> (<a target="_blank" href="https://github.com/keramitsis/confetti-party-webextension">Sourcecode</a>).
+            </p>
+            <p>Confetti powered with <br><a target="_blank" href="https://github.com/catdad/canvas-confetti">canvas-confetti</a> <br>by Kiril Vatev.</p>
+            <p><a target="_blank" href="https://twemoji.twitter.com/">Emojis</a> by Twitter</a>.</p>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

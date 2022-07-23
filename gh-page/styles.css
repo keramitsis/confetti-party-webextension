@@ -1,0 +1,208 @@
+/* web ext styles START */
+html,
+body {
+	margin: 0;
+	width: 196px;
+	background-color: #42414c;
+
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
+		Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+	color: #fbfbfe;
+	line-height: 1.6;
+}
+
+body {
+	padding: 5px;
+}
+
+* {
+	box-sizing: border-box;
+}
+
+.hidden {
+	display: none;
+}
+
+a {
+	color: #00ddff;
+}
+
+p {
+	margin: 0 0 1em 0;
+}
+
+button {
+	display: block;
+	cursor: pointer;
+	outline: none;
+	width: 100%;
+	margin: 0 0 6px 0;
+	padding: 8px 10px;
+	border-radius: 6px;
+	box-shadow: 0 0 6 0px rgba(0, 0, 0, 0.35);
+	transition: all 0.4s;
+
+	background: #2b2a33;
+	border: 1px solid #61616f;
+
+	font-size: 16px;
+	text-align: left;
+	color: #fbfbfe;
+}
+
+button img {
+	position: relative;
+	top: 2px;
+	margin-right: 4px;
+}
+
+button:hover,
+.accordion.active {
+	background-color: #1e1d24;
+	border-color: #1e1d24;
+	color: white;
+}
+
+.accordion {
+	margin: 15px 0 0 0;
+	border-radius: 6px;
+
+	font-size: 12px;
+	font-weight: bold;
+	line-height: 1.6;
+}
+
+.accordion:after {
+	content: "\02795";
+	font-size: 12px;
+	color: #777;
+	float: right;
+	margin-left: 5px;
+}
+
+.active:after {
+	content: "\2796";
+}
+
+.accordion.active {
+	border-radius: 6px 6px 0 0;
+}
+
+.panel {
+	padding: 0 10px;
+	max-height: 0;
+	overflow: hidden;
+	transition: max-height 0.2s ease-out;
+
+	background-color: #1e1d24;
+	font-size: 12px;
+}
+
+#error-content {
+	padding: 5px 10px 10px;
+}
+
+#error-content p {
+	font-size: 14px;
+}
+
+#error-content p:last-child {
+	margin-bottom: 0;
+}
+
+#error-content strong {
+	font-size: 15px;
+}
+
+.poo {
+	position: relative;
+	top: 2px;
+}
+
+/* web ext styles END */
+
+/* pen/ghp custom styles */
+:root {
+	padding: 0 15px;	
+}
+
+html,
+body {
+	width: auto;
+	background-color: #27262c;
+}
+
+body {
+	display: flex;
+	gap: 40px;
+	place-items: center;
+	min-height: 100vh;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+}
+
+#popup-content {
+	width: 196px;
+	padding: 5px;
+	border-radius: 6px;
+	background-color: #42414c;
+	box-shadow: rgba(0, 0, 0, 0.26) 0 3px 6px, rgba(0, 0, 0, 0.33) 0 3px 6px;
+}
+
+.headline {
+	display: flex;
+	gap: 20px;
+}
+
+h1 {
+	margin: 0;
+	font-size: 48px;
+	font-family: 700;
+	line-height: 1.2;
+
+	background: linear-gradient(
+		70.56deg,
+		#0022ff -35.95%,
+		#0022ff -16.25%,
+		#c8fafb 13.03%,
+		#a5edb6 48.3%,
+		#fae85a 63.82%,
+		#fdac3e 81.55%,
+		#ff5c00 105.66%
+	);
+
+	-webkit-text-fill-color: transparent;
+	text-fill-color: transparent;
+	background-clip: text;
+}
+
+/* links */
+.get-extension-links {
+	display: flex;
+	gap: 20px;
+	margin-top: 40px;
+}
+
+.get-extension-links .link {
+	display: flex;
+	align-items: center;
+	padding: 7px 10px;
+	border-radius: 6px;
+	border: 1px solid #4b4959;
+	box-shadow: rgba(0, 0, 0, 0.26) 0 3px 6px, rgba(0, 0, 0, 0.33) 0 3px 6px;
+	text-decoration: none;
+	transition: all ease .24s;
+	color: #bab7c9;
+}
+.get-extension-links .link strong {
+	color: white;
+}
+
+.get-extension-links .link:hover {
+	background-color: #2f2d37;
+}
+
+.get-extension-links .link img {
+	margin-right: 10px;
+}
