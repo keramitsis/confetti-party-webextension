@@ -9,6 +9,14 @@
   }
   window.hasRun = true;
 
+  /* Active State Check */
+  browser.runtime.onMessage.addListener((request) => {
+    console.log("Message from the background script:");
+    console.log(request.greeting);
+    return Promise.resolve({response: "Hi from content script"});
+  });
+
+
   /**
    * canvas-confetti@1.5.1/dist/confetti.browser.js
    *
@@ -20,24 +28,33 @@
   /**
    * Confetti Click
    */
-  function activateConfettiClick() {
-    window.addEventListener("click", confettiClick);
 
-    function confettiClick(e) {
-      let wp = e.x / window.innerWidth;
-      let hp = e.y / window.innerHeight;
+  const confettiClickFn = confettiClick.bind(this);
 
-      confetti({
-        particleCount: 100,
-        startVelocity: 30,
-        spread: 360,
-        zIndex: 2147483647,
-        origin: {
-          x: wp,
-          y: hp,
-        },
-      });
+  function toggleConfettiClick(e) {
+    if (document.body.classList.contains("confetti-button--active")) {
+      document.body.classList.remove("confetti-button--active");
+      window.removeEventListener("click", confettiClickFn);
+    } else {
+      document.body.classList.add("confetti-button--active");
+      window.addEventListener("click", confettiClickFn);
     }
+  }
+
+  function confettiClick(e) {
+    let wp = e.x / window.innerWidth;
+    let hp = e.y / window.innerHeight;
+  
+    confetti({
+      particleCount: 100,
+      startVelocity: 30,
+      spread: 360,
+      zIndex: 2147483647,
+      origin: {
+        x: wp,
+        y: hp
+      }
+    });
   }
 
   /**
@@ -168,7 +185,7 @@
   // browser.runtime...
   chrome.runtime.onMessage.addListener((message) => {
     if (message.command === "confetti-click") {
-      activateConfettiClick();
+      toggleConfettiClick();
     } else if (message.command === "party-popper") {
       activatePartyPopper();
     } else if (message.command === "fireworks") {
@@ -179,4 +196,5 @@
       resetConfetti();
     }
   });
+
 })();

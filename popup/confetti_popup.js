@@ -3,6 +3,7 @@
  * the content script in the page.
  */
 function listenForClicks() {
+
   document.addEventListener("click", (e) => {
     function confettify(tabs) {
       if (e.target.id) {
@@ -14,7 +15,7 @@ function listenForClicks() {
         chrome.tabs.sendMessage(tabs[0].id, {
           command: e.target.id
         });
-        window.close();
+        //window.close();
       }
     }
 
@@ -77,11 +78,35 @@ chrome.tabs.executeScript(
       reportExecuteScriptError();
     }
     listenForClicks();
+    checkActiveStateOfOnClick();
   }
 );
 
-// ACCORDION
 
+// checkActiveStateOfOnClick
+function checkActiveStateOfOnClick(){
+  browser.tabs.query({
+    currentWindow: true,
+    active: true
+  }).then(sendMessageToTab).catch(onError);
+}
+
+function sendMessageToTab(tabs) {
+  browser.tabs.sendMessage(
+    tabs[0].id,
+    {greeting: "Hi from background script"}
+  ).then((response) => {
+    console.log("Message from the content script:");
+    console.log(response.response);
+  }).catch(onError);
+}
+
+function onError(error) {
+  console.error(`Error: ${error}`);
+}
+
+
+// ACCORDION
 var acc = document.getElementsByClassName("accordion");
 var i;
 
