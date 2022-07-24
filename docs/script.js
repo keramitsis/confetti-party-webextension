@@ -44,38 +44,44 @@ function chromeConfetti(e) {
 	});
 }
 
-const $confettiClick = document.getElementById('confetti-click');
-const $partyPopper = document.getElementById('party-popper');
-const $fireworks = document.getElementById('fireworks');
-const $schoolPride = document.getElementById('school-pride');
+const $confettiClick = document.getElementById("confetti-click");
+const $partyPopper = document.getElementById("party-popper");
+const $fireworks = document.getElementById("fireworks");
+const $schoolPride = document.getElementById("school-pride");
+const confettiClickFn = confettiClick.bind(this);
 
 $confettiClick.addEventListener("click", activateConfettiClick);
 $partyPopper.addEventListener("click", activatePartyPopper);
 $fireworks.addEventListener("click", activateFireworks);
 $schoolPride.addEventListener("click", activateSchoolPride);
 
-
 /**
  * Confetti Click
  */
-function activateConfettiClick() {
-	window.addEventListener("click", confettiClick);
-
-	function confettiClick(e) {
-		let wp = e.x / window.innerWidth;
-		let hp = e.y / window.innerHeight;
-
-		confetti({
-			particleCount: 100,
-			startVelocity: 30,
-			spread: 360,
-			zIndex: 2147483647,
-			origin: {
-				x: wp,
-				y: hp
-			}
-		});
+function activateConfettiClick(e) {
+	if ($confettiClick.classList.contains("confetti-button--active")) {
+		$confettiClick.classList.remove("confetti-button--active");
+		window.removeEventListener("click", confettiClickFn);
+	} else {
+		$confettiClick.classList.add("confetti-button--active");
+		window.addEventListener("click", confettiClickFn);
 	}
+}
+
+function confettiClick(e) {
+	let wp = e.x / window.innerWidth;
+	let hp = e.y / window.innerHeight;
+
+	confetti({
+		particleCount: 100,
+		startVelocity: 30,
+		spread: 360,
+		zIndex: 2147483647,
+		origin: {
+			x: wp,
+			y: hp
+		}
+	});
 }
 
 /**
