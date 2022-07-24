@@ -15,7 +15,7 @@ function listenForClicks() {
         chrome.tabs.sendMessage(tabs[0].id, {
           command: e.target.id
         });
-        //window.close();
+        window.close();
       }
     }
 
@@ -91,13 +91,20 @@ function checkActiveStateOfOnClick(){
   }).then(sendMessageToTab).catch(onError);
 }
 
+const $confettiClick = document.getElementById("confetti-click");
+
 function sendMessageToTab(tabs) {
   browser.tabs.sendMessage(
     tabs[0].id,
     {greeting: "Hi from background script"}
   ).then((response) => {
     console.log("Message from the content script:");
-    console.log(response.response);
+    console.log(response);
+    
+    if (response) {
+      $confettiClick.classList.add("confetti-button--active");
+    }
+
   }).catch(onError);
 }
 

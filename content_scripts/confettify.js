@@ -13,7 +13,13 @@
   browser.runtime.onMessage.addListener((request) => {
     console.log("Message from the background script:");
     console.log(request.greeting);
-    return Promise.resolve({response: "Hi from content script"});
+    let response = new Object();
+    if (document.body.classList.contains("confetti-button--active")) {
+      response.confettiClickState = true;
+    } else {
+      response.confettiClickState = false;
+    }
+    return Promise.resolve(response.confettiClickState);
   });
 
 
